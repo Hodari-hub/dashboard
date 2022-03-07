@@ -1,0 +1,88 @@
+*{box-sizing:border-box;}
+#topMenuDiv{height:4%;top:0; background-color: var(--bodyColor);color:var(--textColor);}
+#mainBodyDiv{top:4%;height:96%;bottom:0; background: var(--borderColor);}
+.leftDiv{left:0%;background: var(--sideMenuBg);}
+.rightDiv{right:0%;background: var(--mainBodyColor);}
+.list-group-item{text-transform: uppercase;background:var(--listGroupBg);color:var(--textColor2);border:none;border-bottom:1px solid var(--borderColor);border-radius: 0;}
+.list-group-item:last-child{border-radius: 0;border-bottom: none !important;}
+.list-group-item:hover{background-color: var(--bodyColor);cursor:pointer;color:var(--hoverColor);}
+.list-group-item:active{color:var(--addButton);border-width: 2px;}
+.catDiv{top:0;height: 4%;background: var(--innerBarandTag);color:var(--textColor2);border-bottom:1px solid var(--borderColor) !important;}
+.portifolio{bottom:0;height: 96%;}
+.buttonBtn{bottom:10px;right:5%;}
+.tagsList{max-height:200px;overflow: hidden;background-color: var(--innerBarandTag);color:var(--textColor2);border:4px solid var(--mainBodyColor);border-radius: 10px;}
+.tagsList:hover{cursor: pointer;background-color: var(--bodyColor);color:var(--hoverColor);  }
+.tagsList:active{color:var(--addButton);border-width: 1px;}
+.righMenuBtn{margin:0 !important;padding:10px 20px !important;}
+.righMenuBtn:hover{background: var(--innerBarandTag);color:var(--textColor);}
+.righMenuBtn:last-child:hover{background: var(--danger);color:var(--bodyColor);}
+.btn-primary{background-color: var(--addButton);outline: none;color:var(--btnColor);border-color:var(--addButton);}
+.btn-primary:hover{background-color: var(--addButton);color:var(--bodyColor);border-color:var(--addButton);}
+.btn-primary:focus{border:none !important;outline: none !important;}
+.btn-primary:active{
+    border:none !important;
+    outline: none !important;
+    background-color: var(--addButton) !important;
+    box-shadow:none !important;
+    border-color: #fff!important;
+}
+.response{font-size: 14px;font-style: italic;color:var(--danger);}
+.current{text-transform: uppercase;}
+.swal2-styled.swal2-confirm {border: 0;border-radius: .25em;background: initial;background-color: var(--addButton) !important;color: var(--textColor) !important;font-size: 1.0625em;}
+.swal2-styled.swal2-confirm:active{outline: none !important;}
+.swal2-styled:focus {box-shadow: none !important;}
+input[type=text]:focus{background-color: transparent !important;}
+.addAppBtn{
+    bottom:10px;left:20%;
+}
+
+/* width */
+*::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  *::-webkit-scrollbar-track {
+    background: var(--listGroupBg);
+  }
+   
+  /* Handle */
+  *::-webkit-scrollbar-thumb {
+    background: var(--textColor2); 
+  }
+  
+  /* Handle on hover */
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--bodyColor); 
+  }
+.bottm_div{
+    position:absolute;
+    top:0;width:100%;
+    padding:20px;
+    text-align: center;
+}
+.ovelay_div{
+    position:absolute;
+    top:0;width:100%;
+    text-align: center;
+    background: var(--mainBodyColor);
+}
+.row form button{
+    text-align: center;
+}
+form input,form label,select{
+    background-color: transparent !important;
+    color: var(--textColor2) !important; 
+}
+form select{
+  cursor:pointer;
+}
+table{
+  color:var(--textColor2) !important;
+}
+#trSchedule table tr:last-child{
+  border-bottom: none !important;
+}
+#viewTag{
+  display:none;
+}

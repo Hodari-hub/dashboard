@@ -1,0 +1,22 @@
+<%- include("./partials/reg_headers.ejs"); %>
+    <div class="container-fluid fixed-top h-100 p-0">
+        <!-- Main Body -->
+        <div id='mainBodyDiv' class="position-absolute border-primary w-100 top-17 h-83">
+            <div class="center-div">
+                <h1>HODARI</h1>
+                <form id='dashBoardLogin' method="post" action="/login">
+                    <div class="m-3"><input type="text" id="user_name" name="user_email" class="form-control bg-transparent" placeholder="User Name"></div>
+                    <div class="m-3 row">
+                        <div class='col-10 p-0 m-0'><input type="password" name="user_password" id="log_password" class="form-control bg-transparent" placeholder="Your Password"></div>
+                        <div class='col-2 p-0 m-0 pass_toggler bg-transparent' data-id='log_password'><i class="bi bi-eye-slash"></i></div>
+                    </div>
+                    <div class='response d-none'>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <span>Loaging...</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<%- include("./partials/reg_footer.ejs"); %>

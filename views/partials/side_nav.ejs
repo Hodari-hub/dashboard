@@ -1,0 +1,7 @@
+<!-- Side Nav -->
+<div class="position-absolute w-25 h-100 border-right leftDiv p-1 overflow-auto">
+    <ul class="list-group" id='account_List'><%- locals.accounts %></ul>
+    <% if(locals.title!="Schedule"){%>
+        <button id='addApp' class="btn btn-primary position-fixed addAppBtn"><i class="bi bi-plus-lg"></i></button>
+    <%}%>
+</div>

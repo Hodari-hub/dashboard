@@ -1,0 +1,83 @@
+
+<%- include("./partials/homeheaders.ejs"); %>
+<div class="container-fluid fixed-top h-100 p-0">
+    <!-- Top header -->
+    <%- include("./partials/top_nav.ejs"); %>
+    
+    <!-- Main Body -->
+    <div id='mainBodyDiv' class="position-absolute border-primary w-100 top-17 h-83">
+        <!-- Right Main Body -->
+        <div class="position-absolute w-75 h-100 rightDiv">
+            <div class="position-absolute border-bottom w-100 catDiv p-2">
+                <i class="bi bi-folder2"></i>&nbsp; 
+                <span id='current_app' class='current'>:</span>&nbsp;\&nbsp;<span id='current_view' class='current'></span>
+                <span class="float-end" role='button' id='tags_buttons'>
+                    <i id="returnForm" class="bi bi-journal-x"></i>
+                    &nbsp;&nbsp;
+                    <i id="getTable" class="bi bi-table"></i>
+                </span>
+            </div>
+
+            <div class="position-absolute w-100 portifolio">
+                <div class="row col-4 mx-auto m-0 p-1">
+                    <form class="my-5" id="addRetweet">
+                        <input type="hidden" name="app_id" id="app_id">
+                        <div class="form-group my-4">
+                            <select class="form-control" name="selected_tag">
+                                <option selected>Choose Tag</option>
+                                <%- locals.tags %>
+                            </select>
+                        </div>
+                        <div class="form-group my-4">
+                            <select class="form-control" name="dedicated_day">
+                                <option selected>Choose Day</option>
+                                <script>
+                                    let days=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+                                    for(let i=0;i<days.length;i++){document.write(`<option value='${days[i]}'>${days[i]}</option>`)}
+                                </script>
+                            </select>
+                        </div>
+                        <div class="form-group my-4">
+                            <select class="form-control" name="time_interval">
+                                <option selected>Select Time Interval</option>
+                                <script>
+                                    for(let i=1;i<60;i++){
+                                        let word="Minutes";
+                                        if(i==1){word="Minute";}
+                                        document.write(`<option value='${i}'>${i} ${word} Interval</option>`);
+                                    }
+                                </script>
+                            </select>
+                        </div>
+                        <div class="form-group my-4">
+                            <select class="form-control" name="numofretweet">
+                                <option selected>How Many Post</option>
+                                <script>
+                                    for(let i=1;i<60;i++){
+                                        let word="Retweets";
+                                        if(i==1){word="Retweet";}
+                                        document.write(`<option value='${i}'>${i} ${word}</option>`);
+                                    }
+                                </script>
+                            </select>
+                        </div>
+                        <div class='response d-none'>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <span>Loaging...</span>
+                        </div>
+                        <div class="text-center"><button type="submit" class="btn btn-primary">Submit</button></div>
+                    </form>
+
+                    <table class="table" id="viewTag">
+                        <thead><tr><th scope="col">#</th><th scope="col">Day to run</th><th scope="col">Tag Name</th><th scope="col">Time Interval</th><th scope="col">Action</th></tr></thead>
+                        <tbody id="trSchedule"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Nav -->
+        <%- include("./partials/side_nav.ejs"); %>
+    </div>
+</div>
+<%- include("./partials/homefooter.ejs"); %>

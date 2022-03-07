@@ -1,0 +1,59 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #151515;
+}
+.hacking-animation{
+  background: transparent;
+  color: #eee;
+  height: 40%;
+  width:20%;
+  position: fixed;
+  bottom:0;
+  left:0;
+  overflow: auto;
+}
+.hacking-animation::-webkit-scrollbar {
+  display: none;
+}
+.hacking-text {
+  bottom: 0;
+  font-family: "Share Tech Mono", monospace;
+  color: #eee;
+  font-size: 18px;
+  left: 0;
+  line-height: 1.5rem;
+  padding: 2rem;
+  right: 0;
+}
+.hacking-animation__character {
+  animation: type 1s linear;
+  color: #45aae7;
+}
+.robot_input{
+    border:none;
+    padding:8px;
+    color:#dedede;
+    letter-spacing: 1px;
+    background-color: transparent;
+    outline: none !important;
+    font-family: "Share Tech Mono", monospace;
+    color: #45aae7;
+    min-width:200px;
+}
+@keyframes type {
+  0% {
+    background: #fff;
+    color: #eee;
+  }
+  5% {
+    background: transparent;
+    color: #fff;
+  }
+  100% {
+    background: transparent;
+    color: #45aae7;
+  }
+}

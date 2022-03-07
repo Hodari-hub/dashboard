@@ -1,0 +1,31 @@
+{
+  "name": "newbot",
+  "version": "1.0.0",
+  "description": "new social media bot",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "console.log('the project is created now!')"
+  },
+  "repository": {
+    "type": "git",
+    "url": " deogratiusmabima/socialmediabot"
+  },
+  "keywords": [
+    "social",
+    "media",
+    "bot"
+  ],
+  "author": "deogratius",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "morgan": "^1.10.0",
+    "mysql": "github:mysqljs/mysql",
+    "twit": "^2.2.11"
+  }
+}

@@ -1,0 +1,30 @@
+
+<%- include("./partials/homeheaders.ejs"); %>
+    <div class="container-fluid fixed-top h-100 p-0">
+        <!-- Top header -->
+        <%- include("./partials/top_nav.ejs"); %>
+        
+        <!-- Main Body -->
+        <div id='mainBodyDiv' class="position-absolute border-primary w-100 top-17 h-83">
+            <!-- Right Main Body -->
+            <div class="position-absolute w-75 h-100 rightDiv">
+                <div class="position-absolute border-bottom w-100 catDiv p-2">
+                    <i class="bi bi-folder2"></i>&nbsp; 
+                    <span id='current_app' class='current'>..</span>&nbsp;/&nbsp;<span id='current_view' class='current'></span>
+                    <span class="float-end" role='button' id='tags_buttons'></span>
+                </div>
+
+                <div class="position-absolute w-100 portifolio">
+                    <div class="row m-0 p-1">
+                        <div class="bottm_div"><span style="color:#fff !important;">No tag available!</span></div>
+                        <div class='ovelay_div row' id="tag_List"><%- locals.tags %></div>
+                    </div>
+                    <button id='addTag' class="btn btn-primary position-absolute buttonBtn"><i class="bi bi-plus-lg"></i></button>
+                </div>
+            </div>
+
+            <!-- Side Nav -->
+            <%- include("./partials/side_nav.ejs"); %>
+        </div>
+    </div>
+<%- include("./partials/homefooter.ejs"); %>

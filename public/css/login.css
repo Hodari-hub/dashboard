@@ -1,0 +1,11 @@
+
+html,body {height: 100%;margin: 0;padding: 0;background: var(--body);}
+@keyframes type {0% {background: var(--transclr);color: var(--anmclr);}5% {background: transparent;color: var(--transclr);}100% {background: transparent;color: var(--theClr);}}
+.center-div{position: absolute;margin: auto;top: 15%;right: 40%;bottom: 35%;left: 40%;width: 20%;height:30%;
+  color:var(--theClr);border-radius: 3px;text-align: center;font-size: 2em;padding:30px;}
+.center-div .btn{background-color: var(--theClr) !important;color:var(--de);}
+.center-div input{border-radius:0px;height: 100%;padding: 10px;background-color: transparent;color:var(--transclr) !important;}
+.center-div .row input:last-child{border-right:none;}
+.center-div h1{font-weight: bold;font-family: 'Abril Fatface', cursive;letter-spacing: 5px;margin:20px 0;}
+#topMenuDiv,#mainBodyDiv{background-color: var(--body);}
+.pass_toggler{padding: 0;border-top:1px solid var(--de);border-right:1px solid var(--de);border-bottom:1px solid var(--de);border-left:none;cursor: pointer;}
