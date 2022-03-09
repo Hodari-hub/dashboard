@@ -10,25 +10,20 @@ reg_route.post('/login',async (req,res)=>{
         function (error, results) {
             if(error) throw error;
             if(bcrypt.compareSync(user_password, results[0].users_pass)){
-                    res.cookie('userId',results[0].users_id);
-                    res.cookie('userEmail',results[0].user_email);
-                    res.cookie('userPass',results[0].users_pass);
-                    res.json({code: 200,message:"Succesfuly login"});
+                    res.cookie('userId',results[0].users_id); res.cookie('userEmail',results[0].user_email);
+                    res.cookie('userPass',results[0].users_pass); res.json({code: 1,message:"Succesfuly login"});
                     res.end();
                 }
-                 else{
-                        res.json({code: 300,message:"Login failed!"});
-                        res.end();
-                    }
+                else{res.json({code: 0,message:"Login failed!"});res.end();}
         });
 });
 
 //logout 
-reg_route.post('/logout',async (req,res)=>{
+reg_route.post('/logout', async (req,res)=>{
     res.clearCookie("userId");
     res.clearCookie("userEmail");
     res.clearCookie("userPass");
-    res.json({code: 200,message:"Succesfuly login"});
+    res.json({code: 1,message:"Succesfuly login"});
     res.end();
 });
 

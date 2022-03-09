@@ -1,101 +1,3 @@
-/* const Tags=require("./tags_class");
-const Service=require("./service");
-const bot_func=require("./bot_func");
-  */
-//wait for the document to full loaded
-/* $( document ).ready(function() {
-    //view app now
-    $("body").on('click','.viewApp',function(){
-         let appid=$(this).data("appid"),
-         appname=$(this).data("appname");  
-         boat_app.viewapp(appid,appname); 
-         Tags.viewTags(appid,appname); 
-
-         Swal.fire({
-            title: 'Are you sure?',
-            text: `You want to delete '${accountName}' BOT from the system`,
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                tag_db.run(`DELETE FROM tags WHERE app_id='${tagId}'`,function(err){
-                    if(err){Swal.fire({title:"Error",text:err,icon:'error',confirmButtonColor: '#f27474',}); return;}
-                    bot_db.run(`DELETE FROM botapp WHERE app_id='${tagId}'`,function(err){
-                        if(err){Swal.fire({title:"Error",text:err,icon:'error',confirmButtonColor: '#f27474',}); return;}
-                        Swal.fire('Deleted!',`BOT named '${accountName}' has been deleted successfully!`,'success');
-                        $("body").find(`#app_${tagId}`).fadeOut(1000);
-                        $("body").find(`.tagsList`).fadeOut();
-                        setTimeout(()=>{$("body").find(`#app_${tagId}`).remove();},1000);
-                        setTimeout(()=>{$("body").find(`.tagsList`).remove();},1000);
-                        $("body").find("#current_app").html("..");
-                        $("body").find("#current_view").html("");
-                    });
-                });
-            }
-        });
-    });
-    //add tag
-    $("body").on('click','#addTag',function(){ let appid=$("body").find("#appId_holder").val(); if (!appid) { Swal.fire({title:"Error",text:"Please choose app first!",icon:'error',confirmButtonColor: '#f27474',}); return;};  Tags.addTag(appid); });
-    //delete bot
-    $("body").on('click','.delet_bot',function(){ 
-        let botname=$(this).data("id"),name=$(this).data("name");
-        Swal.fire({
-            title: 'Are you sure?',
-            text: `You want to delete '${botname}' BOT from the system`,
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                tag_db.run(`DELETE FROM tags WHERE app_id='${tagId}'`,function(err){
-                    if(err){Swal.fire({title:"Error",text:err,icon:'error',confirmButtonColor: '#f27474',}); return;}
-                    bot_db.run(`DELETE FROM botapp WHERE app_id='${tagId}'`,function(err){
-                        if(err){Swal.fire({title:"Error",text:err,icon:'error',confirmButtonColor: '#f27474',}); return;}
-                        Swal.fire('Deleted!',`BOT named '${accountName}' has been deleted successfully!`,'success');
-                        $("body").find(`#app_${tagId}`).fadeOut(1000);
-                        $("body").find(`.tagsList`).fadeOut();
-                        setTimeout(()=>{$("body").find(`#app_${tagId}`).remove();},1000);
-                        setTimeout(()=>{$("body").find(`.tagsList`).remove();},1000);
-                        $("body").find("#current_app").html("..");
-                        $("body").find("#current_view").html("");
-                    });
-                });
-            }
-        });
-    });
-
-    //click tab
-    $("body").on('dblclick',".tagsList",function(){let tagId=$(this).data("tagid"),tagName=$(this).data("tagname"),status=$(this).data("tagcond"),tagtime=$(this).data("tagtime");Tags.deleteTag(tagId,tagName,status,tagtime);});
-    
-    //return the current time
-    let now = function(){var d = new Date();let h=d.getHours(),m=d.getMinutes();if(h<=9){h=`0${h}`;}else{h=`${h}`;}if(m<=9){m=`0${m}`;}else{m=`${m}`;} return `${h}:${m}`;}
-
-    //run the check every seconds to see if the is a event to attend
-    setInterval(function(){
-        //get the tag to run 
-        for(let i=0;i< tagsTime.length;i++){
-            let tag=tagsTime[i].split("-")[0];
-            let time=tagsTime[i].split("-")[1];
-            let status=tagsTime[i].split("-")[2];
-            let appid=tagsTime[i].split("-")[3];
-            console.log(time,now());
-            if(time==now()){
-                //run the first tweet
-                bot_func.run_tweet(appid,tag);
-            }
-            else{
-                console.log("we have not get anything to post yet!");
-            }
-        }
-    },1000);
-});
- */
-
 //handle new app submission
 $("body").on('click','#addApp',function(){
     Swal.fire({
@@ -231,18 +133,16 @@ $("body").on('click','#getTable',function(){
     });
 });
 
+//view tag
 $("#returnForm").click(function(){ $("#addRetweet").fadeIn(); $("#viewTag").fadeOut();});
 
+//this delete tag function meane delete item from the schedule
 $("body").on('click','.deleteTag',function(){
     let day=$(this).data("day");
     let id=$(this).data("id");
     Swal.fire({
-        title: '',
-        html: `Are you sure? you want to delete <strong>${day}</strong> schedule from the list`,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
+        title: '',html: `Are you sure? you want to delete <strong>${day}</strong> schedule from the list`,
+        icon: 'warning',showCancelButton: true,confirmButtonColor: '#3085d6',cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
@@ -255,4 +155,58 @@ $("body").on('click','.deleteTag',function(){
             });
         }
       });
+});
+
+//handle logout
+$("body").on('click','#logout_btn',function(){
+    $.ajax({
+        type:"POST",url:"/logout", data:{logout: ""},
+        success:function(rs){
+            if(rs.code==1){location='/index';}
+            else{Swal.fire({title: '',text: rs.message,icon: 'info',confirmButtonText: 'Ok'});}
+        }
+    });
+});
+
+//go to schedule
+$("body").on('click','#schedule',function(){location='/schedule';});
+
+//when tag clicked allow user to selete
+$("body").on('click','.tagsList',function(){
+    let appid=$(this).data("tagid"),appname=$(this).data("appname");
+    Swal.fire({
+        title: 'Hello!',text: `Do you want to delete '${appname}' from the system!`,
+        icon: 'warning',showCancelButton: true,confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',confirmButtonText: 'Yes, delete!'
+    })
+    .then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type:"POST",url:"/delete_tag", data:{appid:appid},
+                success:function(rs){
+                    if(rs.code==1){location.reload();}
+                    else{Swal.fire({title: '',text: rs.message,icon: 'info',confirmButtonText: 'Ok'});}
+                }
+            });
+        }
+    });
+});
+
+//delete bot
+$("body").on('click','#deletBot',function(){ 
+    let botid=$("#app_id").val(),name=$("#current_view").html();
+    Swal.fire({
+        title: 'Are you sure?',text: `You want to delete '${name}' BOT from the system`, icon: 'warning',
+        showCancelButton:true,confirmButtonColor:'#3085d6',cancelButtonColor:'#d33',confirmButtonText:'Yes, delete!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type:"POST",url:"/delete_app", data:{botid:botid},
+                success:function(rs){
+                    if(rs.code==1){location.reload();}
+                    else{Swal.fire({title: '',text: rs.message,icon: 'info',confirmButtonText: 'Ok'});}
+                }
+            });
+        }
+    });
 });

@@ -23,7 +23,7 @@ var retweet=(err,data,access_token,access_secret,api_key,api_secrete,app_name,rt
                     //if you have find err then record the result or rerun the process
                     conn.query(`INSERT INTO failed_attempt(id_str,user_name,screen_name,post_text,profile_picture,retweeted_count,reson_note,app_id,app_name) 
                     VALUES('${tweet_list[i].retweeted_status.id_str}','${usernames}','${tweet_list[i].retweeted_status.user.screen_name}','${txt}','${tweet_list[i].retweeted_status.user.profile_image_url}','${tweet_list[i].retweet_count}','${erromsg}','${app_id}','${app_name}')`,function(err){
-                        if(err) throw err;
+                        if(err){console.log(err);}
                         console.log("retweet failed");
                     });
                 }
@@ -31,7 +31,7 @@ var retweet=(err,data,access_token,access_secret,api_key,api_secrete,app_name,rt
                     //if no error found then save the report
                     conn.query(`INSERT INTO retweeted_post(id_str,user_name,screen_name,post_text,profile_picture,retweeted_count,app_id,app_name) 
                     VALUES('${tweet_list[i].retweeted_status.id_str}','${usernames}','${tweet_list[i].retweeted_status.user.screen_name}','${txt}','${tweet_list[i].retweeted_status.user.profile_image_url}','${tweet_list[i].retweet_count}','${app_id}','${app_name}')`,function(err){
-                        if(err) throw err;
+                        if(err){console.log(err);}
                         console.log("retweet success");
                     });
                 }
@@ -46,8 +46,8 @@ var retweet=(err,data,access_token,access_secret,api_key,api_secrete,app_name,rt
                 if(error){
                     //if you have find err then record the result or rerun the process
                     conn.query(`INSERT INTO failed_attempt(id_str,user_name,screen_name,post_text,profile_picture,retweeted_count,reson_note,app_id,app_name) 
-                    VALUES('${tweet_list[i].retweeted_status.id_str}','${usernames}','${tweet_list[i].retweeted_status.user.screen_name}','${txt}','${tweet_list[i].retweeted_status.user.profile_image_url}','${tweet_list[i].retweet_count}','${err[0].message}','${app_id}','${app_name}')`,function(err){
-                        if(err) throw err;
+                    VALUES('${tweet_list[i].id_str}','${usernames}','${tweet_list[i].user.screen_name}','${txt}','${tweet_list[i].user.profile_image_url}','${tweet_list[i].retweet_count}','${err}','${app_id}','${app_name}')`,function(err){
+                        if(err){console.log(err);}
                         console.log("retweet failed");
                     });
                 }
@@ -55,7 +55,7 @@ var retweet=(err,data,access_token,access_secret,api_key,api_secrete,app_name,rt
                     //if no error found then save the report
                     conn.query(`INSERT INTO retweeted_post(id_str,user_name,screen_name,post_text,profile_picture,retweeted_count,app_id,app_name) 
                     VALUES('${tweet_list[i].id_str}','${usernames}','${tweet_list[i].user.screen_name}','${txt}','${tweet_list[i].user.profile_image_url}','${tweet_list[i].retweet_count}','${app_id}','${app_name}')`,function(err){
-                        if(err) throw err;
+                        if(err){console.log(err);}
                         console.log("retweet success");
                     });
                 }

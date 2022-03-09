@@ -7,11 +7,12 @@
         <!-- Main Body -->
         <div id='mainBodyDiv' class="position-absolute border-primary w-100 top-17 h-83">
             <!-- Right Main Body -->
+            <input type="hidden" name="app_id" id="app_id">
             <div class="position-absolute w-75 h-100 rightDiv">
                 <div class="position-absolute border-bottom w-100 catDiv p-2">
                     <i class="bi bi-folder2"></i>&nbsp; 
-                    <span id='current_app' class='current'>..</span>&nbsp;/&nbsp;<span id='current_view' class='current'></span>
-                    <span class="float-end" role='button' id='tags_buttons'></span>
+                    <span id='current_app' class='current'>:</span>&nbsp;\&nbsp;<span id='current_view' class='current'></span>
+                    <span class="float-end" role='button'><i id="deletBot" class="bi bi-trash"></i></span>
                 </div>
 
                 <div class="position-absolute w-100 portifolio">
@@ -22,7 +23,6 @@
                     <button id='addTag' class="btn btn-primary position-absolute buttonBtn"><i class="bi bi-plus-lg"></i></button>
                 </div>
             </div>
-
             <!-- Side Nav -->
             <%- include("./partials/side_nav.ejs"); %>
         </div>

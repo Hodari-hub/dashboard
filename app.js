@@ -15,6 +15,7 @@ app.set("view engine","ejs");
 //listern on this port
 app.listen(3000);
 
+//passcookies to the browser
 app.use(cookieParser());
 
 //create tables if not exist
@@ -30,14 +31,14 @@ app.use("/static",express.static(path.join(__dirname,'public')));
 //handle incoming form post
 app.use(express.urlencoded({extended: true}));
 
+//registraion routre
+app.use(auth_route);
+
 //handle all route
 app.use(core_route);
 
 //registraion routre
 app.use(twiter_route);
-
-//registraion routre
-app.use(auth_route);
 
 //handle unknown  url
 app.use((req,res)=>{res.status(404).render("404",{title:"Losted!"});});
