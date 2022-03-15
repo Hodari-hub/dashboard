@@ -8,6 +8,12 @@ var create_tables=()=>{
     conn.query(`CREATE TABLE IF NOT EXISTS botapp(app_id INTEGER PRIMARY KEY AUTO_INCREMENT,app_name TEXT NOT NULL,
             api_key TEXT NOT NULL,api_secrete TEXT NOT NULL,access_token TEXT NOT NULL,access_secret TEXT NOT NULL)`,
              function (error, result) {if (error) throw error;});
+
+    conn.query(`CREATE TABLE IF NOT EXISTS onlinenumber(number_id INTEGER PRIMARY KEY AUTO_INCREMENT,user_name TEXT NOT NULL,user_number VARCHAR(255) NOT NULL,unique_URL TEXT NOT NULL)`,
+        function (error, result) {if (error) throw error;});
+
+    conn.query(`CREATE TABLE IF NOT EXISTS messages(message_id INTEGER PRIMARY KEY AUTO_INCREMENT,message TEXT NOT NULL,number_id VARCHAR(255) NOT NULL,from_num VARCHAR(255) NOT NULL)`,
+        function (error, result) {if (error) throw error;});
     
     conn.query(`CREATE TABLE IF NOT EXISTS tags(tag_id INTEGER PRIMARY KEY AUTO_INCREMENT,tag_Name TEXT NOT NULL)`, 
         function (error, result) {if (error) throw error;});

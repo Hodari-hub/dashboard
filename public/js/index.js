@@ -29,6 +29,37 @@ $("body").on('click','#addApp',function(){
         }
     });
 });
+//add number
+$("body").on('click','#addNumber',function(){
+    Swal.fire({
+        title: 'New Number',
+        html: `<input type="text" id="number_owner" class="swal2-input" placeholder="Number Owner">
+        <input type="text" id="new_number" class="swal2-input" placeholder="New Number">
+        <input type="text" id="response_url" class="swal2-input" placeholder="Response Url">`,
+        confirmButtonText: 'Add',focusConfirm: false,
+        preConfirm: () => {
+            let number_owner = Swal.getPopup().querySelector('#number_owner').value;
+            let new_number = Swal.getPopup().querySelector('#new_number').value;
+            let response_url = Swal.getPopup().querySelector('#response_url').value;
+            if (!number_owner || !new_number) {Swal.showValidationMessage(`All Input Field are needed!`);}
+            return { number_owner: number_owner, new_number: new_number, response_url:  response_url}
+        }
+    })
+    .then((result) => {
+        if(result.isConfirmed){
+            $.ajax({
+                type:"POST",url:"/addNumber", data:{number_owner: result.value.number_owner, new_number: result.value.new_number, response_url: result.value.response_url},
+                success:function(rs){
+                    if(rs.code==1){
+                        $("#account_List").prepend(`<li class="list-group-item borderless viewApp" data-appid='${rs.number_id}' data-appname='${result.value.new_number}'>${result.value.new_number}</li>`);
+                        Swal.fire({title: '',html: rs.message,icon: 'success',confirmButtonText: 'Ok'});
+                    }
+                    else{Swal.fire({title: '',text: rs.message,icon: 'info',confirmButtonText: 'Ok'});}
+                }
+            });
+        }
+    });
+});
 
 
 $("body").on('click','#colorPlate',function(){
@@ -170,6 +201,7 @@ $("body").on('click','#logout_btn',function(){
 
 //go to schedule
 $("body").on('click','#schedule',function(){location='/schedule';});
+$("body").on('click','#numbers',function(){location='/numbers';});
 
 //when tag clicked allow user to selete
 $("body").on('click','.tagsList',function(){

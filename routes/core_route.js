@@ -66,6 +66,30 @@ route.get("/schedule",isAuth,(req,res)=>{
                     else{ res.render("schedule",{title:"Schedule",accounts:[acc],tags:[tags]}); }
                 });
             }
+            else{res.render("schedule",{title:"Schedule",accounts:[acc],tags:[tags]});}
+        });
+});
+
+//handle numbers route
+route.get("/numbers",isAuth,(req,res)=>{
+    conn.query(`SELECT * FROM onlinenumber`, 
+        function (error, results) {
+            if(error){console.log(error);}
+            let acc="",tags="";
+            if(results.length){
+                for(let i =0; i<results.length; i++){acc+=`<li class="list-group-item borderless viewApp" data-appid='${results[i].number_id}' data-appname='${results[i].user_name}'>${results[i].user_name} : ${results[i].user_number}</li>`;}
+                conn.query('SELECT * FROM tags ORDER BY tag_id DESC',(err,rs)=>{
+                    if(err){console.log(err);}
+                    if(rs.length){
+                        for(let i =0; i<rs.length; i++){ tags+=`<option value='${rs[i].tag_Name}'>${rs[i].tag_Name}</option>`;}
+                        res.render("numbers",{title:"Numbers",accounts:[acc],tags:[tags]});
+                    }
+                    else{ res.render("numbers",{title:"Numbers",accounts:[acc],tags:[tags]}); }
+                });
+            }
+            else{
+                res.render("numbers",{title:"Numbers",accounts:[acc],tags:[tags]});
+            }
         });
 });
 

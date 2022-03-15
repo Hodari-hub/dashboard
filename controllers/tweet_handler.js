@@ -72,4 +72,19 @@ var serch_tweet=(rt_id,app_id,tag_name,day_name,app_name,api_key,api_secrete,acc
     T.get('search/tweets',params,function(err, data){retweet(err,data,access_token,access_secret,api_key,api_secrete,app_name,rt_id,app_id,day_name);});
 }
 
-module.exports={serch_tweet}
+//reserve this function for finding post and tweet them
+var find_tweet = ()=>{
+    //let T = new twit({consumer_key:"xJNFTECYcq2U8aAsENWnTCWDN",consumer_secret:"2tIe91Tq2KiG80Bc0Zzyp5XV6360gEWUROlVbfxeUcv7Wu1Hps",access_token:"1438761575070973952-RR1krQJFcLM6cBXsEDAt0hC585jsPG",access_token_secret:"xTP9LaEwsCXzkN461ZhPK7toHr1fpLPijHKtbm4gdxgS4"});
+    /* T.get('users/suggestions/:slug', { slug: 'funny' }, function (err, data, response) {
+        console.log("Tweet handler has called!")
+        console.log(data,response);
+
+    }); */
+    /* var sanFrancisco = [ '-6.22', '22.17', '34.53', '32.94'];
+    var stream = T.stream('statuses/filter', {track: 'diamondi' , locations: sanFrancisco,language: 'sw' })
+    stream.on('tweet', function (tweet) {
+        console.log(tweet)
+    }) */
+}
+
+module.exports={serch_tweet,find_tweet}

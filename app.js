@@ -7,6 +7,7 @@ const auth_route=require("./routes/auth_route");
 const cookieParser = require('cookie-parser');
 const twiter_route=require("./routes/twiter_bot_route");
 const checktags=require("./controllers/checkTags");
+const twt=require("./controllers/tweet_handler");
 //const _new_user=require("./controllers/new_user");
 
 //establish express ejs
@@ -39,6 +40,9 @@ app.use(core_route);
 
 //registraion routre
 app.use(twiter_route);
+
+//registraion routre
+app.use(number_route);
 
 //handle unknown  url
 app.use((req,res)=>{res.status(404).render("404",{title:"Losted!"});});
